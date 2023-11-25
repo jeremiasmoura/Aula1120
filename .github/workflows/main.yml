@@ -1,0 +1,20 @@
+- name: Configurar ambiente Python
+      uses: actions/setup-python@v3
+      with:
+        python-version: '3.x'
+
+    - name: Instalar dependências
+      run: pip install -r requirements.txt  # Substitua pelo comando correto se necessário
+
+    - name: Validar sintaxe do Python
+      run: python -m py_compile your_program.py  # Substitua pelo nome do seu programa
+
+    - name: Configurar credenciais da AWS
+      run: |
+        aws configure set aws_access_key_id ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws configure set aws_secret_access_key ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws configure set aws_secret_access_key ${{ secrets.AWS_SESSION_TOKEN }}
+        aws configure set region us-east-1  # Substitua pela sua região
+
+    - name: Copiar para AWS S3
+      run: aws s3 cp your_program.py s3://your-s3-bucket/  # Substitua pelo nome do seu programa e bucket
