@@ -1,5 +1,5 @@
-# app.py
-from flash import Flash
+#app.py
+from flask import Flask
 
 app = Flask(_name_)
 
@@ -7,5 +7,5 @@ app = Flask(_name_)
 def hello():
   return 'Hello, S3!'
 
-if_name_=='_main_':
-  app.run(debug=True)
+if _name_ =='_main_':
+   app.run(debug=True)
